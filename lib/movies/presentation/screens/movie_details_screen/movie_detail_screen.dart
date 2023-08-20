@@ -200,10 +200,10 @@ class MovieDetailContent extends StatelessWidget {
                     ),
                   ),
                 ),
-                // SliverPadding(
-                //     padding: const EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 24.0).w,
-                //     sliver: _showMoviesRecommendations(),
-                // ),
+                SliverPadding(
+                    padding: const EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 24.0).w,
+                    sliver: _showMoviesRecommendations(),
+                ),
             ],
           );
         }

@@ -19,39 +19,36 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<BottomNavBarBloc>(
-      create: (_) => sl<BottomNavBarBloc>(),
-      child: ScreenUtilInit(
-        designSize: const Size(360, 690),
-        minTextAdapt: true,
-        splitScreenMode: true,
-        builder: (BuildContext context, Widget? child) {
-          return MultiBlocProvider(
-            providers: [
-              BlocProvider<MoviesBloc>(
-                create: (context) => sl<MoviesBloc>()
-                  ..add(GetNowPlayingMoviesEvent())
-                  ..add(GetPopularMoviesEvent())
-                  ..add(GetTopRatedMoviesEvent()),
-              ),
-              BlocProvider<TvBloc>(
-                create: (context) => sl<TvBloc>()
-                  ..add(GetOnAirTvsEvent())
-                  ..add(GetPopularTvsEvent())
-                  ..add(GetTopRatedTvsEvent()),
-              ),
-            ],
-            child: MaterialApp(
-              debugShowCheckedModeBanner: false,
-              title: 'Movies App',
-              theme: ThemeData.dark().copyWith(
-                scaffoldBackgroundColor: Colors.grey.shade900,
-              ),
-              home: const LayOutScreen(),
+    return ScreenUtilInit(
+      designSize: const Size(360, 690),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (BuildContext context, Widget? child) {
+        return MultiBlocProvider(
+          providers: [
+            BlocProvider<MoviesBloc>(
+              create: (_) => sl<MoviesBloc>()
+                ..add(GetNowPlayingMoviesEvent())
+                ..add(GetPopularMoviesEvent())
+                ..add(GetTopRatedMoviesEvent()),
             ),
-          );
-        },
-      ),
+            BlocProvider<TvBloc>(
+              create: (_) => sl<TvBloc>()
+                ..add(GetOnAirTvsEvent())
+                ..add(GetPopularTvsEvent())
+                ..add(GetTopRatedTvsEvent()),
+            ),
+          ],
+          child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Movies App',
+            theme: ThemeData.dark().copyWith(
+              scaffoldBackgroundColor: Colors.grey.shade900,
+            ),
+            home: const LayOutScreen(),
+          ),
+        );
+      },
     );
   }
 }

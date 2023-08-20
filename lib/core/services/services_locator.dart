@@ -85,6 +85,6 @@ class ServicesLocator {
         () => RemoteSearchDataSource());
 
     //Bottom Nav Bar Bloc
-    sl.registerFactory<BottomNavBarBloc>(() => BottomNavBarBloc());
+    //sl.registerFactory<BottomNavBarBloc>(() => BottomNavBarBloc());
   }
 }
